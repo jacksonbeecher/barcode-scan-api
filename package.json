@@ -1,5 +1,5 @@
 {
-  "name": "barcode-scanner-api",
+  "name": "barcode-scan-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
