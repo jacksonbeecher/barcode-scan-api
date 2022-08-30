@@ -1,2 +1,6 @@
-config.js
 node_modules
+.env
+*.env
+credentials.js
+nodemon.json
+repository
