@@ -6,19 +6,19 @@ const db = require('../models');
 //     res.status(200).send(orders);
 // }
 
-const getLinesById = async (req, res, next) => {
-    let id = req.params.id;
-    const lines = await db.orderline.findOne({ where: { OrderLineId: id } });
-    res.send(lines);
-    res.status(200).send(lines);
-}
-
+//Use getLinesByOrderId in place of getAllLines as all lines will not be required.
 const getLinesByOrderId = async (req, res, next) => {
     let id = req.params.id;
-    let unitId = req.params.unitId;
+    let unitId = req.params.unitId; //Will need to filter by unitId
     const lines = await db.orderline.findOne({ where: { OrderId: id } });
     res.send(lines);
     res.status(200).send(order);
+}
+
+const getLinesById = async (req, res, next) => {
+    let id = req.params.id;
+    const lines = await db.orderline.findOne({ where: { OrderLineId: id } });
+    res.status(200).send(lines);
 }
 
 const updateLineById = async(req, res, next) => {
