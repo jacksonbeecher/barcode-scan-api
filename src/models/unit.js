@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-    const Unit = sequelize.define(`Unit`, {
+    const Unit = sequelize.define('Unit', {
         //Attributes
         UnitId: {
             type: DataTypes.INTEGER,
@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        UnitColorCode: {
+        UnitColorCodeId: {
             type: DataTypes.INTEGER,
         },
-        OrderMax: {
+        MaxOrder: {
             type: DataTypes.INTEGER,
         },
         PoolId: {

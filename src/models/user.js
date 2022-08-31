@@ -12,11 +12,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        UnitName: {
-            type: DataTypes.STRING
+        UserName: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         Active: {
             type: DataTypes.BOOLEAN,
+            allowNull: false,
         }
 
     }, {
@@ -29,22 +31,4 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     return User;
-
 }
-
-
-
-
-
-//console.log(User === sequelize.models.User);
-
-
-
-// class User {
-//     constructor(UserId, OrderDate,OrderNo, CustomerCode, Customer, Reference, OrderStatus, NoLines){
-//         this.UserId = UserId;
-
-//     }
-// }
-
-// module.exports = User;

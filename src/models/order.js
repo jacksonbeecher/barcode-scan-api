@@ -33,7 +33,44 @@ module.exports = (sequelize, DataTypes) => {
         NoLines: {
             type: DataTypes.INTEGER,
         },
-
+        SalesAnalysis: {
+            type: DataTypes.STRING,
+        },
+        SalesCode: {
+            type: DataTypes.STRING,
+        },
+        CatalogOrder: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
+        DefaultCarrier:{
+            type: DataTypes.STRING,
+        },
+        CarrierId: {
+            type: DataTypes.INTEGER,
+        },
+        FreightCharge:{
+            type: DataTypes.STRING,
+        },
+        StatusDate:{
+            type: DataTypes.DATE,
+        },
+        RowNo:{
+            type: DataTypes.STRING,
+        },
+        RunId:{
+            type: DataTypes.INTEGER,
+        },
+        PackingDetails:{
+            type: DataTypes.STRING,
+        },
+        TotalItems:{
+            type: DataTypes.STRING,
+        },
+        TotalWgt:{
+            type: DataTypes.FLOAT,
+        }
+        
 
     }, {
         // don't add the timestamp attributes (updatedAt, createdAt)
@@ -43,7 +80,7 @@ module.exports = (sequelize, DataTypes) => {
         // If don't want updatedAt
         updatedAt: false,
     });
-
+    
     return Order;
 }
 

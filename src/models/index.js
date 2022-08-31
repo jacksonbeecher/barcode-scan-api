@@ -18,7 +18,11 @@ const sequelize = new Sequelize(
     },
     dialectOptions: {
         //options: { encrypt: true }
-    }
+    },
+    define: {
+        freezeTableName: true,
+        schema: "ash",
+    },
 })
 
 // //Console log databases.
@@ -59,6 +63,9 @@ db.order = require('../models/order')(sequelize, DataTypes);
 db.orderline = require('../models/orderline')(sequelize, DataTypes);
 db.unit = require('../models/unit')(sequelize, DataTypes);
 db.user = require('../models/user')(sequelize, DataTypes);
+//Create association betweebn orders and orderlines.
+db.order.hasMany(db.orderline);
+db.orderline.belongsTo(db.order, { targetKey: 'OrderId', sourceKey: 'OrderId' })
 
 db.sequelize //Do not sync. Sync creates new tables. 
 //.sync({ force: false, alt})

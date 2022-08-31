@@ -10,15 +10,15 @@ const db = require('../models');
 const getLinesByOrderId = async (req, res, next) => {
     let id = req.params.id;
     let unitId = req.params.unitId; //Will need to filter by unitId
-    const lines = await db.orderline.findOne({ where: { OrderId: id } });
+    const lines = await db.orderline.findAll({ where: { OrderId: id, UnitId: unitId } });
     res.send(lines);
     res.status(200).send(order);
 }
 
-const getLinesById = async (req, res, next) => {
+const getLineById = async (req, res, next) => {
     let id = req.params.id;
-    const lines = await db.orderline.findOne({ where: { OrderLineId: id } });
-    res.status(200).send(lines);
+    const line = await db.orderline.findOne({ where: { OrderLineId: id } });
+    res.status(200).send(line);
 }
 
 const updateLineById = async(req, res, next) => {
@@ -27,9 +27,14 @@ const updateLineById = async(req, res, next) => {
     res.status(200).send(line);
     //Edit Order
 }
+// //Update line status after retrieved for scanner.
+// const updateLineStatusById = async (req, res, next) => {
+//     let id = req.params.id;
+
+// }
 
 module.exports = {
-    getLinesById,
+    getLineById,
     getLinesByOrderId,
     updateLineById,
 }
