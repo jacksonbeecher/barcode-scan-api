@@ -1,7 +1,6 @@
 const dbconfig = require('../config/dbconfig.js');
 const { Sequelize, DataTypes } = require('sequelize');
 
-
 //Connect sequelise orm to database.
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -24,31 +23,9 @@ const sequelize = new Sequelize(
         schema: "ash",
     },
 })
-
-// //Console log databases.
-// sequelize.query(`SELECT name, database_id, create_date  
-//                     FROM sys.databases   
-//                     GO `, 
-//                     { type: sequelize.QueryTypes.SELECT })
-//                 .then(async dbs => {
-//                     console.log(dbs);
-//                 });
-//Console log users.
-// sequelize.query(`SELECT TOP (1000) [UnitId]
-//                 ,[UnitCode]
-//                 ,[UnitColorCodeId]
-//                 ,[MaxOrder]
-//                 ,[PoolId]
-//                 ,[HandHeldCode]
-//                 FROM [DispatchManager].[ash].[Unit]`, 
-//                     { type: sequelize.QueryTypes.SELECT })
-//                 .then(async dbs => {
-//                     console.log(dbs);
-//                 });
-
 sequelize.authenticate()
     .then(() => {
-        console.log('Connected');
+        console.log('ORM Connected');
     })
     .catch(err => {
         console.log("Error" + err);
@@ -64,20 +41,9 @@ db.orderline = require('../models/orderline')(sequelize, DataTypes);
 db.unit = require('../models/unit')(sequelize, DataTypes);
 db.user = require('../models/user')(sequelize, DataTypes);
 //Create association betweebn orders and orderlines.
-db.order.hasMany(db.orderline);
-db.orderline.belongsTo(db.order, { targetKey: 'OrderId', sourceKey: 'OrderId' })
+db.order.hasMany(db.orderline, { foreignKey: 'OrderId' });
+db.orderline.belongsTo(db.order, { foreignKey: 'OrderId' })
 
-db.sequelize //Do not sync. Sync creates new tables. 
-//.sync({ force: false, alt})
-// .then(() => {
-//     console.log('Sync');
-// })
+db.sequelize //Do not call .sync. Sync creates and alters existing tables. 
 
 module.exports = db;
-// Test Connection to orm
-// try {
-//     sequelize.authenticate();
-//     console.log('Connection has been established successfully.');
-// } catch (error) {
-//     console.error('Unable to connect to the database:', error);
-// }
