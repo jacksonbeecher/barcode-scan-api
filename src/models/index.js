@@ -40,9 +40,11 @@ db.order = require('../models/order')(sequelize, DataTypes);
 db.orderline = require('../models/orderline')(sequelize, DataTypes);
 db.unit = require('../models/unit')(sequelize, DataTypes);
 db.user = require('../models/user')(sequelize, DataTypes);
+db.carrier = require('../models/carrier')(sequelize, DataTypes);
 //Create association betweebn orders and orderlines.
 db.order.hasMany(db.orderline, { foreignKey: 'OrderId' });
-db.orderline.belongsTo(db.order, { foreignKey: 'OrderId' })
+db.orderline.belongsTo(db.order, { foreignKey: 'OrderId' });
+//Link carriers and order
 
 db.sequelize //Do not call .sync. Sync creates and alters existing tables. 
 

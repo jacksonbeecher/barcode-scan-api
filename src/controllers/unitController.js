@@ -6,7 +6,7 @@ const getAllUnits = async (req, res, next) => {
 }
 //Get single unit. For unit info in local storage.
 const getUnitById = async (req, res, next) => {
-    let id = req.params.id;
+    let id = req.params.unitId;
     const unit = await db.unit.findOne({ where: { UnitId: id } });
     res.status(200).send(unit);
 }

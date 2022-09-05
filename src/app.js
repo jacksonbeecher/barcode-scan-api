@@ -7,6 +7,7 @@ const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const orderLineRoutes = require('./routes/orderLineRoutes');
 const unitRoutes = require('./routes/unitRoutes');
+const carrierRoutes = require('./routes/carrierRoutes');
 
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +32,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/units', unitRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/orderlines', orderLineRoutes);
+app.use('/api/carriers', carrierRoutes);
 
 //handle routes that cannot handle request.
 app.use((req, res, next) => {
