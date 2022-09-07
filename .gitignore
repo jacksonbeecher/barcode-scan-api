@@ -4,4 +4,3 @@ node_modules
 credentials.js
 nodemon.json
 repository
-dboperations.js
